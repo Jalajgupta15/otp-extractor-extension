@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Advanced OTP Extractor",
+  "version": "1.0",
+  "description": "Automatically detects OTP in emails and copies it to clipboard.",
+  "permissions": ["activeTab", "clipboardWrite", "storage", "scripting"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://mail.google.com/*", "*://outlook.live.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
